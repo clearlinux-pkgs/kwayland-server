@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kwayland-server
-Version  : 5.19.2
-Release  : 4
-URL      : https://download.kde.org/stable/plasma/5.19.2/kwayland-server-5.19.2.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.19.2/kwayland-server-5.19.2.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.19.2/kwayland-server-5.19.2.tar.xz.sig
+Version  : 5.19.4
+Release  : 5
+URL      : https://download.kde.org/stable/plasma/5.19.4/kwayland-server-5.19.4.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.19.4/kwayland-server-5.19.4.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.19.4/kwayland-server-5.19.4.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 LGPL-3.0
@@ -74,15 +74,15 @@ license components for the kwayland-server package.
 
 
 %prep
-%setup -q -n kwayland-server-5.19.2
-cd %{_builddir}/kwayland-server-5.19.2
+%setup -q -n kwayland-server-5.19.4
+cd %{_builddir}/kwayland-server-5.19.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1592948457
+export SOURCE_DATE_EPOCH=1597633842
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -98,11 +98,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1592948457
+export SOURCE_DATE_EPOCH=1597633842
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kwayland-server
-cp %{_builddir}/kwayland-server-5.19.2/COPYING.LIB %{buildroot}/usr/share/package-licenses/kwayland-server/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/kwayland-server-5.19.2/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kwayland-server-5.19.4/COPYING.LIB %{buildroot}/usr/share/package-licenses/kwayland-server/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/kwayland-server-5.19.4/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
 pushd clr-build
 %make_install
 popd
@@ -179,7 +179,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKWaylandServer.so.5
-/usr/lib64/libKWaylandServer.so.5.19.2
+/usr/lib64/libKWaylandServer.so.5.19.4
 
 %files license
 %defattr(0644,root,root,0755)
