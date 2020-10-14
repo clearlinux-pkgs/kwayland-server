@@ -1,2 +1,2 @@
-5.19.4
-weston-dev weston
+5.20.0
+pkgconfig(wayland-protocols)

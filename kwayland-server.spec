@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kwayland-server
-Version  : 5.19.4
-Release  : 5
-URL      : https://download.kde.org/stable/plasma/5.19.4/kwayland-server-5.19.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.19.4/kwayland-server-5.19.4.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.19.4/kwayland-server-5.19.4.tar.xz.sig
+Version  : 5.20.0
+Release  : 6
+URL      : https://download.kde.org/stable/plasma/5.20.0/kwayland-server-5.20.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.20.0/kwayland-server-5.20.0.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.20.0/kwayland-server-5.20.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : LGPL-2.1 LGPL-3.0
+License  : BSD-3-Clause LGPL-2.1 LGPL-3.0 MIT
 Requires: kwayland-server-data = %{version}-%{release}
 Requires: kwayland-server-lib = %{version}-%{release}
 Requires: kwayland-server-license = %{version}-%{release}
@@ -24,12 +24,10 @@ BuildRequires : extra-cmake-modules qtwayland-dev
 BuildRequires : extra-cmake-modules wayland
 BuildRequires : extra-cmake-modules-data
 BuildRequires : kwayland-dev
-BuildRequires : pkg-config
 BuildRequires : pkgconfig(wayland-protocols)
 BuildRequires : plasma-wayland-protocols-dev
 BuildRequires : qtbase-dev
 BuildRequires : qtbase-dev mesa-dev
-BuildRequires : weston-dev weston
 
 %description
 # KWayland
@@ -74,15 +72,15 @@ license components for the kwayland-server package.
 
 
 %prep
-%setup -q -n kwayland-server-5.19.4
-cd %{_builddir}/kwayland-server-5.19.4
+%setup -q -n kwayland-server-5.20.0
+cd %{_builddir}/kwayland-server-5.20.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1597633842
+export SOURCE_DATE_EPOCH=1602640357
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -98,11 +96,17 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1597633842
+export SOURCE_DATE_EPOCH=1602640357
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kwayland-server
-cp %{_builddir}/kwayland-server-5.19.4/COPYING.LIB %{buildroot}/usr/share/package-licenses/kwayland-server/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/kwayland-server-5.19.4/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kwayland-server-5.20.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kwayland-server/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/kwayland-server-5.20.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kwayland-server/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/kwayland-server-5.20.0/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kwayland-server/3c3d7573e137d48253731c975ecf90d74cfa9efe
+cp %{_builddir}/kwayland-server-5.20.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kwayland-server/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/kwayland-server-5.20.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kwayland-server/757b86330df80f81143d5916b3e92b4bcb1b1890
+cp %{_builddir}/kwayland-server-5.20.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kwayland-server-5.20.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kwayland-server-5.20.0/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kwayland-server/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
 pushd clr-build
 %make_install
 popd
@@ -116,12 +120,17 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
+/usr/include/KWaylandServer/abstract_data_source.h
 /usr/include/KWaylandServer/appmenu_interface.h
 /usr/include/KWaylandServer/blur_interface.h
 /usr/include/KWaylandServer/buffer_interface.h
 /usr/include/KWaylandServer/clientconnection.h
 /usr/include/KWaylandServer/compositor_interface.h
 /usr/include/KWaylandServer/contrast_interface.h
+/usr/include/KWaylandServer/datacontroldevice_v1_interface.h
+/usr/include/KWaylandServer/datacontroldevicemanager_v1_interface.h
+/usr/include/KWaylandServer/datacontroloffer_v1_interface.h
+/usr/include/KWaylandServer/datacontrolsource_v1_interface.h
 /usr/include/KWaylandServer/datadevice_interface.h
 /usr/include/KWaylandServer/datadevicemanager_interface.h
 /usr/include/KWaylandServer/dataoffer_interface.h
@@ -133,10 +142,13 @@ popd
 /usr/include/KWaylandServer/filtered_display.h
 /usr/include/KWaylandServer/global.h
 /usr/include/KWaylandServer/idle_interface.h
-/usr/include/KWaylandServer/idleinhibit_interface.h
+/usr/include/KWaylandServer/idleinhibit_v1_interface.h
+/usr/include/KWaylandServer/inputmethod_v1_interface.h
 /usr/include/KWaylandServer/keyboard_interface.h
+/usr/include/KWaylandServer/keyboard_shortcuts_inhibit_v1_interface.h
 /usr/include/KWaylandServer/keystate_interface.h
 /usr/include/KWaylandServer/kwaylandserver_export.h
+/usr/include/KWaylandServer/layershell_v1_interface.h
 /usr/include/KWaylandServer/linuxdmabuf_v1_interface.h
 /usr/include/KWaylandServer/output_interface.h
 /usr/include/KWaylandServer/outputchangeset.h
@@ -149,25 +161,25 @@ popd
 /usr/include/KWaylandServer/pointer_interface.h
 /usr/include/KWaylandServer/pointerconstraints_interface.h
 /usr/include/KWaylandServer/pointergestures_interface.h
-/usr/include/KWaylandServer/qtsurfaceextension_interface.h
+/usr/include/KWaylandServer/primaryselectiondevicemanager_v1_interface.h
 /usr/include/KWaylandServer/region_interface.h
 /usr/include/KWaylandServer/relativepointer_interface.h
-/usr/include/KWaylandServer/remote_access_interface.h
 /usr/include/KWaylandServer/resource.h
+/usr/include/KWaylandServer/screencast_v1_interface.h
 /usr/include/KWaylandServer/seat_interface.h
 /usr/include/KWaylandServer/server_decoration_interface.h
 /usr/include/KWaylandServer/server_decoration_palette_interface.h
 /usr/include/KWaylandServer/shadow_interface.h
-/usr/include/KWaylandServer/shell_interface.h
 /usr/include/KWaylandServer/slide_interface.h
 /usr/include/KWaylandServer/subcompositor_interface.h
 /usr/include/KWaylandServer/surface_interface.h
 /usr/include/KWaylandServer/tablet_interface.h
 /usr/include/KWaylandServer/textinput_interface.h
 /usr/include/KWaylandServer/touch_interface.h
-/usr/include/KWaylandServer/xdgdecoration_interface.h
-/usr/include/KWaylandServer/xdgforeign_interface.h
-/usr/include/KWaylandServer/xdgoutput_interface.h
+/usr/include/KWaylandServer/viewporter_interface.h
+/usr/include/KWaylandServer/xdgdecoration_v1_interface.h
+/usr/include/KWaylandServer/xdgforeign_v2_interface.h
+/usr/include/KWaylandServer/xdgoutput_v1_interface.h
 /usr/include/KWaylandServer/xdgshell_interface.h
 /usr/include/kwaylandserver_version.h
 /usr/lib64/cmake/KWaylandServer/KWaylandServerConfig.cmake
@@ -179,9 +191,14 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKWaylandServer.so.5
-/usr/lib64/libKWaylandServer.so.5.19.4
+/usr/lib64/libKWaylandServer.so.5.20.0
 
 %files license
 %defattr(0644,root,root,0755)
+/usr/share/package-licenses/kwayland-server/3c3d7573e137d48253731c975ecf90d74cfa9efe
+/usr/share/package-licenses/kwayland-server/6f1f675aa5f6a2bbaa573b8343044b166be28399
+/usr/share/package-licenses/kwayland-server/757b86330df80f81143d5916b3e92b4bcb1b1890
+/usr/share/package-licenses/kwayland-server/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
 /usr/share/package-licenses/kwayland-server/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+/usr/share/package-licenses/kwayland-server/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
 /usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
