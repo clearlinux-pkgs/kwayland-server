@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kwayland-server
-Version  : 5.20.5
-Release  : 11
-URL      : https://download.kde.org/stable/plasma/5.20.5/kwayland-server-5.20.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.20.5/kwayland-server-5.20.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.20.5/kwayland-server-5.20.5.tar.xz.sig
+Version  : 5.21.4
+Release  : 12
+URL      : https://download.kde.org/stable/plasma/5.21.4/kwayland-server-5.21.4.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.21.4/kwayland-server-5.21.4.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.21.4/kwayland-server-5.21.4.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1 LGPL-3.0 MIT
@@ -72,15 +72,15 @@ license components for the kwayland-server package.
 
 
 %prep
-%setup -q -n kwayland-server-5.20.5
-cd %{_builddir}/kwayland-server-5.20.5
+%setup -q -n kwayland-server-5.21.4
+cd %{_builddir}/kwayland-server-5.21.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1609868268
+export SOURCE_DATE_EPOCH=1618665203
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -96,17 +96,16 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1609868268
+export SOURCE_DATE_EPOCH=1618665203
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kwayland-server
-cp %{_builddir}/kwayland-server-5.20.5/COPYING.LIB %{buildroot}/usr/share/package-licenses/kwayland-server/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/kwayland-server-5.20.5/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kwayland-server/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/kwayland-server-5.20.5/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kwayland-server/3c3d7573e137d48253731c975ecf90d74cfa9efe
-cp %{_builddir}/kwayland-server-5.20.5/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kwayland-server/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/kwayland-server-5.20.5/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kwayland-server/757b86330df80f81143d5916b3e92b4bcb1b1890
-cp %{_builddir}/kwayland-server-5.20.5/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kwayland-server-5.20.5/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kwayland-server-5.20.5/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kwayland-server/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
+cp %{_builddir}/kwayland-server-5.21.4/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kwayland-server/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/kwayland-server-5.21.4/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kwayland-server/3c3d7573e137d48253731c975ecf90d74cfa9efe
+cp %{_builddir}/kwayland-server-5.21.4/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kwayland-server/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/kwayland-server-5.21.4/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kwayland-server/757b86330df80f81143d5916b3e92b4bcb1b1890
+cp %{_builddir}/kwayland-server-5.21.4/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kwayland-server-5.21.4/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kwayland-server-5.21.4/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kwayland-server/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
 pushd clr-build
 %make_install
 popd
@@ -159,11 +158,11 @@ popd
 /usr/include/KWaylandServer/plasmavirtualdesktop_interface.h
 /usr/include/KWaylandServer/plasmawindowmanagement_interface.h
 /usr/include/KWaylandServer/pointer_interface.h
-/usr/include/KWaylandServer/pointerconstraints_interface.h
-/usr/include/KWaylandServer/pointergestures_interface.h
+/usr/include/KWaylandServer/pointerconstraints_v1_interface.h
+/usr/include/KWaylandServer/pointergestures_v1_interface.h
 /usr/include/KWaylandServer/primaryselectiondevicemanager_v1_interface.h
 /usr/include/KWaylandServer/region_interface.h
-/usr/include/KWaylandServer/relativepointer_interface.h
+/usr/include/KWaylandServer/relativepointer_v1_interface.h
 /usr/include/KWaylandServer/resource.h
 /usr/include/KWaylandServer/screencast_v1_interface.h
 /usr/include/KWaylandServer/seat_interface.h
@@ -173,9 +172,12 @@ popd
 /usr/include/KWaylandServer/slide_interface.h
 /usr/include/KWaylandServer/subcompositor_interface.h
 /usr/include/KWaylandServer/surface_interface.h
-/usr/include/KWaylandServer/tablet_interface.h
-/usr/include/KWaylandServer/textinput_interface.h
+/usr/include/KWaylandServer/tablet_v2_interface.h
+/usr/include/KWaylandServer/textinput.h
+/usr/include/KWaylandServer/textinput_v2_interface.h
+/usr/include/KWaylandServer/textinput_v3_interface.h
 /usr/include/KWaylandServer/touch_interface.h
+/usr/include/KWaylandServer/utils.h
 /usr/include/KWaylandServer/viewporter_interface.h
 /usr/include/KWaylandServer/xdgdecoration_v1_interface.h
 /usr/include/KWaylandServer/xdgforeign_v2_interface.h
@@ -191,7 +193,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKWaylandServer.so.5
-/usr/lib64/libKWaylandServer.so.5.20.5
+/usr/lib64/libKWaylandServer.so.5.21.4
 
 %files license
 %defattr(0644,root,root,0755)
@@ -199,6 +201,5 @@ popd
 /usr/share/package-licenses/kwayland-server/6f1f675aa5f6a2bbaa573b8343044b166be28399
 /usr/share/package-licenses/kwayland-server/757b86330df80f81143d5916b3e92b4bcb1b1890
 /usr/share/package-licenses/kwayland-server/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-/usr/share/package-licenses/kwayland-server/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 /usr/share/package-licenses/kwayland-server/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
 /usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
