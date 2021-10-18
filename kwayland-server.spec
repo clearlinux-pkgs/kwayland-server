@@ -4,7 +4,7 @@
 #
 Name     : kwayland-server
 Version  : 5.23.0
-Release  : 16
+Release  : 17
 URL      : https://download.kde.org/stable/plasma/5.23.0/kwayland-server-5.23.0.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.23.0/kwayland-server-5.23.0.tar.xz
 Summary  : No detailed summary available
