@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : kwayland-server
-Version  : 5.24.2
-Release  : 25
-URL      : https://download.kde.org/stable/plasma/5.24.2/kwayland-server-5.24.2.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.24.2/kwayland-server-5.24.2.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.24.2/kwayland-server-5.24.2.tar.xz.sig
+Version  : 5.24.3
+Release  : 26
+URL      : https://download.kde.org/stable/plasma/5.24.3/kwayland-server-5.24.3.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.24.3/kwayland-server-5.24.3.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.24.3/kwayland-server-5.24.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1 LGPL-3.0 MIT
@@ -72,15 +72,15 @@ license components for the kwayland-server package.
 
 
 %prep
-%setup -q -n kwayland-server-5.24.2
-cd %{_builddir}/kwayland-server-5.24.2
+%setup -q -n kwayland-server-5.24.3
+cd %{_builddir}/kwayland-server-5.24.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1645662104
+export SOURCE_DATE_EPOCH=1647270492
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -96,16 +96,16 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1645662104
+export SOURCE_DATE_EPOCH=1647270492
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kwayland-server
-cp %{_builddir}/kwayland-server-5.24.2/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kwayland-server/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/kwayland-server-5.24.2/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kwayland-server/3c3d7573e137d48253731c975ecf90d74cfa9efe
-cp %{_builddir}/kwayland-server-5.24.2/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kwayland-server/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/kwayland-server-5.24.2/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kwayland-server/757b86330df80f81143d5916b3e92b4bcb1b1890
-cp %{_builddir}/kwayland-server-5.24.2/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kwayland-server-5.24.2/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kwayland-server-5.24.2/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kwayland-server/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
+cp %{_builddir}/kwayland-server-5.24.3/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kwayland-server/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/kwayland-server-5.24.3/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kwayland-server/3c3d7573e137d48253731c975ecf90d74cfa9efe
+cp %{_builddir}/kwayland-server-5.24.3/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kwayland-server/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/kwayland-server-5.24.3/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kwayland-server/757b86330df80f81143d5916b3e92b4bcb1b1890
+cp %{_builddir}/kwayland-server-5.24.3/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kwayland-server-5.24.3/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kwayland-server-5.24.3/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kwayland-server/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
 pushd clr-build
 %make_install
 popd
@@ -199,7 +199,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKWaylandServer.so.5
-/usr/lib64/libKWaylandServer.so.5.24.2
+/usr/lib64/libKWaylandServer.so.5.24.3
 
 %files license
 %defattr(0644,root,root,0755)
