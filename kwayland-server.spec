@@ -6,7 +6,7 @@
 #
 Name     : kwayland-server
 Version  : 5.24.5
-Release  : 28
+Release  : 29
 URL      : https://download.kde.org/stable/plasma/5.24.5/kwayland-server-5.24.5.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.24.5/kwayland-server-5.24.5.tar.xz
 Source1  : https://download.kde.org/stable/plasma/5.24.5/kwayland-server-5.24.5.tar.xz.sig
