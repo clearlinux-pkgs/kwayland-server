@@ -6,7 +6,7 @@
 #
 Name     : kwayland-server
 Version  : 5.24.5
-Release  : 29
+Release  : 30
 URL      : https://download.kde.org/stable/plasma/5.24.5/kwayland-server-5.24.5.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.24.5/kwayland-server-5.24.5.tar.xz
 Source1  : https://download.kde.org/stable/plasma/5.24.5/kwayland-server-5.24.5.tar.xz.sig
@@ -28,6 +28,9 @@ BuildRequires : pkgconfig(wayland-protocols)
 BuildRequires : plasma-wayland-protocols-dev
 BuildRequires : qtbase-dev
 BuildRequires : qtbase-dev mesa-dev
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 # KWayland
@@ -80,32 +83,32 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1651618519
+export SOURCE_DATE_EPOCH=1676859210
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1651618519
+export SOURCE_DATE_EPOCH=1676859210
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kwayland-server
-cp %{_builddir}/kwayland-server-5.24.5/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kwayland-server/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/kwayland-server-5.24.5/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kwayland-server/3c3d7573e137d48253731c975ecf90d74cfa9efe
-cp %{_builddir}/kwayland-server-5.24.5/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kwayland-server/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/kwayland-server-5.24.5/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kwayland-server/757b86330df80f81143d5916b3e92b4bcb1b1890
-cp %{_builddir}/kwayland-server-5.24.5/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kwayland-server-5.24.5/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kwayland-server-5.24.5/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kwayland-server/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
+cp %{_builddir}/kwayland-server-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kwayland-server/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
+cp %{_builddir}/kwayland-server-%{version}/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kwayland-server/3c3d7573e137d48253731c975ecf90d74cfa9efe || :
+cp %{_builddir}/kwayland-server-%{version}/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kwayland-server/6f1f675aa5f6a2bbaa573b8343044b166be28399 || :
+cp %{_builddir}/kwayland-server-%{version}/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kwayland-server/757b86330df80f81143d5916b3e92b4bcb1b1890 || :
+cp %{_builddir}/kwayland-server-%{version}/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32 || :
+cp %{_builddir}/kwayland-server-%{version}/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kwayland-server/e458941548e0864907e654fa2e192844ae90fc32 || :
+cp %{_builddir}/kwayland-server-%{version}/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kwayland-server/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3 || :
 pushd clr-build
 %make_install
 popd
